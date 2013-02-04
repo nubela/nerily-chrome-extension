@@ -1,11 +1,12 @@
 {
-    "name":"Nerily",
-    "description":"Shows some of the features of the Context Menus API using an event page",
+    "name":"NERILY Information Extraction Trainer",
+    "description":"A Chrome Extension used for generating training modelsets for the NERILY information extraction service",
     "version":"0.1",
     "permissions":["contextMenus", "storage", "notifications", "tabs", "http://*/*", "https://*/*", "file://*/*"],
     "background":{
         "persistent":false,
         "scripts":["nerily.js"]
     },
-    "manifest_version":2
+    "manifest_version":2,
+    "icons": {"128": "icon128.png" }
 }

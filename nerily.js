@@ -1,7 +1,7 @@
 var HELP_URL = "http://spawt.me";
 
 function showNotification(title, body) {
-    var notification = window.webkitNotifications.createNotification('icon.png', title, body);
+    var notification = window.webkitNotifications.createNotification('icon128.png', title, body);
 
     notification.ondisplay = function(event) {
         setTimeout(function() {
@@ -92,6 +92,11 @@ function downloadTsv() {
 
             var words = bodyText.split(" ");
             for (var i = 0; i < words.length; i++) {
+                var word = words[i];
+                word = _strip(_nl2space(word));
+                if (word.length == 0 || word == " ") {
+                    continue;
+                }
 
                 //check if it matches label
                 var matchLbl = false;
@@ -112,8 +117,7 @@ function downloadTsv() {
 
                 //does not match
                 if (!matchLbl) {
-                    var word = words[i];
-                    tsvStr += word + "\t0\n";
+                    tsvStr += word + "\tO\n";
                 }
             }
         }
