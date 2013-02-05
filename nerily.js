@@ -18,7 +18,7 @@ function showNotification(title, body) {
 
 function beginLabeling(tab, lbl, selectedText) {
     chrome.tabs.executeScript(tab.id, {file:"contentscript.js"}, function () {
-        chrome.tabs.sendRequest(tab.id, {method:"getText"}, function (response) {
+        chrome.tabs.sendMessage(tab.id, {method:"getText"}, function (response) {
             if (response.method == "getText") {
                 allText = response.data;
                 label(lbl, selectedText, allText)
@@ -82,7 +82,6 @@ function downloadTsv() {
         if (documents == null) {
             documents = [];
         }
-        console.log(documents.length);
 
         var tsvStr = "";
         for (var page = 0; page < documents.length; page++) {
